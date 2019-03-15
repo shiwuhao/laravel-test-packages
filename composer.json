@@ -66,7 +66,7 @@
     "repositories": {
         "laravel-rbac": {
             "type": "path",
-            "url": "./packages/laravel-rbac"
+            "url": "../laravel-packages/laravel-rbac"
         }
     }
 }

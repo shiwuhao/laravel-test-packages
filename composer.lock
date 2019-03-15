@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "155ac3e17df0a26e89c775d9d9efc0f5",
+    "content-hash": "12dd7ab2d733f3696b093d9fac5c652b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1590,8 +1590,8 @@
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "./packages/laravel-rbac",
-                "reference": "2aa4cd4db7486a980acb605cdaf8327e37372a07",
+                "url": "../laravel-packages/laravel-rbac",
+                "reference": "2d82e6e768e090a7a718c7d856a44353e96b02db",
                 "shasum": null
             },
             "require": {
@@ -1599,6 +1599,16 @@
                 "illuminate/support": "^5.8"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shiwuhao\\Rbac\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Rbac": "Shiwuhao\\Rbac\\Rbac"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Shiwuhao\\Rbac\\": "src"
