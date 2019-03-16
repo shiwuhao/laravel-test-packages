@@ -12,6 +12,11 @@
 */
 
 Route::get('/', function () {
-    auth();
+
     return view('welcome');
 });
+
+Route::get('/permissions', 'PermissionController@index');
+Route::get('/roles', 'RoleController@index');
+
+

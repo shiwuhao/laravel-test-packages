@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Shiwuhao\Rbac\Models\Permission;
 
 class PermissionController extends Controller
 {
     public function index()
     {
-        echo Permission::class;
+        $permission = new Permission();
+        $permission->name = 'post.create';
+        $permission->display_name = '文章创建';
+        $permission->save();
+
+        return $permission;
     }
 }
