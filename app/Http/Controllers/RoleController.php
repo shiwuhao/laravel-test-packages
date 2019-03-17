@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Category;
 use App\Permission;
 use App\Role;
 use App\User;
@@ -11,6 +12,7 @@ class RoleController extends Controller
 {
     public function index()
     {
+
 //        $role = new Role();
 //        $role->name = 'Administrator';
 //        $role->display_name = '管理员';
@@ -38,12 +40,27 @@ class RoleController extends Controller
 //        $user = User::find(1);
 //        $user->attachRoles(19);
 
+//        $user = User::find(1);
+//
+//        dd($user->hasPermission('post.create|post.edit1', false));
+////        dd($user->hasRole('Administrator|guest', true));
+
+
+//        return $user->permissions()->get()->pluck('permissions')->collapse()->pluck('name')->unique();
+
+
+
+
+        // 模型授权
+//        $role = Role::find(1);
+////        return $role->categories()->get();
+//        $categories = $role->modelPermissions(Category::class);
+//        dump($categories->get());
+//        $role->syncModelPermissions([1,2,3],Category::class);
+//        dump($categories->get());
+
         $user = User::find(1);
-
-        dd($user->hasPermission('post.create|post.edit1', false));
-//        dd($user->hasRole('Administrator|guest', true));
-
-
-        return $user->permissions()->get()->pluck('permissions')->collapse()->pluck('name')->unique();
+        $res = $user->hasModelPermission(Category::class,[1]);
+        dump($res);
     }
 }

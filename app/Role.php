@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Illuminate\Contracts\Database\ModelIdentifier;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Shiwuhao\Rbac\Traits\RoleTrait;
 
 /**
@@ -30,4 +32,15 @@ use Shiwuhao\Rbac\Traits\RoleTrait;
 class Role extends Model
 {
     use RoleTrait;
+
+    /**
+     * 数据授权-分类 (获取此角色下所有分类)
+     * 多对多多态关联  定义反向关联
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->morphedByMany('App\Category', 'modelable', 'model_permissions')->withTimestamps();
+    }
+
 }
