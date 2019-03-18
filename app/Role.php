@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Parent_;
 use Shiwuhao\Rbac\Traits\RoleTrait;
 
 /**
@@ -30,4 +31,19 @@ use Shiwuhao\Rbac\Traits\RoleTrait;
 class Role extends Model
 {
     use RoleTrait;
+
+//    public function categories()
+//    {
+//        return $this->morphedByMany(Category::class, 'modelable', config('rbac.table.model_permissions'))->withTimestamps();
+//    }
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $relation = config('rbac.modelPermission');
+        foreach ($relation as $key => $v) {
+            dump($v);
+            $this->morphedByMany($v, 'modelable', config('rbac.table.model_permissions'))->withTimestamps();
+        }
+    }
 }

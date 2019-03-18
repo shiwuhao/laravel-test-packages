@@ -26,6 +26,11 @@ return [
         'permission' => 'permission_id',
     ],
 
+
+    'modelPermission' => [
+        'categories' => \App\Category::class,
+    ],
+
     // 定界符
     'delimiter' => '|',
 

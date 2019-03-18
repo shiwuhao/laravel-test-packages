@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Category;
 use App\Permission;
 use App\Role;
 use App\User;
@@ -38,14 +39,24 @@ class RoleController extends Controller
 //        $user = User::find(1);
 //        $user->attachRoles(19);
 
-        $user = User::find(1);
+        $role = Role::find(1);
+        dump($role);
+//        $role->morphedByMany(Category::class, 'modelable', config('rbac.table.model_permissions'));
+//        $res = $role->getRelationValue('categories');
+//        $role->setRelation(Category::class, 'categories');
+        dump($role->getRelationValue(Category::class));
 
-        $user->hasModelPermission();
+        return 111;
+        return $role->getRelationValue('categories');
 
-        dd($user->hasPermission('post.create|post.edit1', false));
-//        dd($user->hasRole('Administrator|guest', true));
-
-
-        return $user->permissions()->get()->pluck('permissions')->collapse()->pluck('name')->unique();
+//        $user = User::find(1);
+//
+//        return $user->hasCategories(Category::class, []);
+//
+//        dd($user->hasPermission('post.create|post.edit1', false));
+////        dd($user->hasRole('Administrator|guest', true));
+//
+//
+//        return $user->permissions()->get()->pluck('permissions')->collapse()->pluck('name')->unique();
     }
 }

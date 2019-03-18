@@ -19,4 +19,12 @@ Route::get('/', function () {
 Route::get('/permissions', 'PermissionController@index');
 Route::get('/roles', 'RoleController@index');
 
+Route::get('/categories/{id}', function ($id){
+    return \App\Category::find($id);
+})->middleware('permission.model:categories');
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
