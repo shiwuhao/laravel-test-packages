@@ -40,6 +40,8 @@ class RoleController extends Controller
 
         $user = User::find(1);
 
+        $user->hasModelPermission();
+
         dd($user->hasPermission('post.create|post.edit1', false));
 //        dd($user->hasRole('Administrator|guest', true));
 
