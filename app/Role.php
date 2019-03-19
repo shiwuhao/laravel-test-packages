@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Parent_;
+use phpDocumentor\Reflection\Types\Self_;
+use Shiwuhao\Rbac\Exceptions\InvalidArgumentException;
 use Shiwuhao\Rbac\Traits\RoleTrait;
 
 /**
@@ -32,18 +34,23 @@ class Role extends Model
 {
     use RoleTrait;
 
-//    public function categories()
-//    {
-//        return $this->morphedByMany(Category::class, 'modelable', config('rbac.table.model_permissions'))->withTimestamps();
-//    }
+    /**
+     * @var string
+     */
+    protected $table = 'rbac_roles';
 
+    /**
+     * Role constructor.
+     * @param array $attributes
+     */
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $relation = config('rbac.modelPermission');
-        foreach ($relation as $key => $v) {
-            dump($v);
-            $this->morphedByMany($v, 'modelable', config('rbac.table.model_permissions'))->withTimestamps();
-        }
+        $this->setTable(config('rbac.table.roles'));
+    }
+
+    public function categories()
+    {
+        return $this->morphedByMany(Category::class, 'modelable', config('rbac.table.permissionModel'))->withTimestamps();
     }
 }

@@ -36,18 +36,24 @@ class RoleController extends Controller
 //        return $role;
 
 
-//        $user = User::find(1);
+        $user = User::find(1);
 //        $user->attachRoles(19);
 
-        $role = Role::find(1);
-        dump($role);
+        $res = $user->hasPermissionModel(Category::class,'4|5', true);
+        dump($res);
+        return 111;
+
+          $role = Role::with('categories')->find(1);
+//        $role->attachPermissionModels('categories', 2);
+//        $role->categories()->sync([1,2,3,4]);
+        return $role->categories()->get();
 //        $role->morphedByMany(Category::class, 'modelable', config('rbac.table.model_permissions'));
 //        $res = $role->getRelationValue('categories');
 //        $role->setRelation(Category::class, 'categories');
-        dump($role->getRelationValue(Category::class));
+//        dump($role->getRelationValue(Category::class));
 
         return 111;
-        return $role->getRelationValue('categories');
+//        return $role->getRelationValue('categories');
 
 //        $user = User::find(1);
 //

@@ -11,8 +11,9 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        $permissionTable = config('rbac.table.permissions');
         $sql = <<<EOF
-INSERT INTO `permissions` (`id`, `pid`, `name`, `display_name`, `description`, `action`, `created_at`, `updated_at`)
+INSERT INTO `{$permissionTable}` (`id`, `pid`, `name`, `display_name`, `description`, `action`, `created_at`, `updated_at`)
 VALUES
 	(1, 0, 'RoleController', '角色管理', '', 'App\\Http\\Controllers\\RoleController', '2019-03-17 10:16:09', '2019-03-17 10:16:09'),
 	(2, 1, 'role:index', '角色列表', '', 'App\\Http\\Controllers\\RoleController@index', '2019-03-17 10:16:09', '2019-03-17 10:16:09'),

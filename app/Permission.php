@@ -33,4 +33,6 @@ use Shiwuhao\Rbac\Traits\PermissionTrait;
 class Permission extends Model
 {
     use PermissionTrait;
+
+    protected $table = 'rbac_permissions';
 }
