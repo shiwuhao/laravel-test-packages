@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Shiwuhao\Rbac\Middleware\ModelPermissionMiddleware;
 use Shiwuhao\Rbac\Middleware\PermissionMiddleware;
 use Shiwuhao\Rbac\Middleware\RoleMiddleware;
 
@@ -64,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => RoleMiddleware::class,
         'permission' => PermissionMiddleware::class,
+        'permission.model' => ModelPermissionMiddleware::class
     ];
 
     /**

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Shiwuhao\Rbac\Traits\UserTrait;
+use Shiwuhao\Rbac\Traits\UserTrait as RbacUserTrait;
 
 /**
  * App\User
@@ -33,7 +33,7 @@ use Shiwuhao\Rbac\Traits\UserTrait;
  */
 class User extends Authenticatable
 {
-    use UserTrait;
+    use RbacUserTrait;
     use Notifiable;
 
     /**

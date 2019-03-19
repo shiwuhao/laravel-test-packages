@@ -12,11 +12,11 @@ return [
     // 表名称
     'table' => [
         'users' => 'users',
-        'roles' => 'roles',
-        'role_user' => 'role_user',
-        'permissions' => 'permissions',
-        'permission_role' => 'permission_role',
-        'model_permissions' => 'model_permissions',
+        'roles' => 'rbac_roles',
+        'roleUser' => 'rbac_role_user',
+        'permissions' => 'rbac_permissions',
+        'permissionRole' => 'rbac_permission_role',
+        'permissionModel' => 'rbac_permission_model',
     ],
 
     // 外键
@@ -24,6 +24,11 @@ return [
         'role' => 'role_id',
         'user' => 'user_id',
         'permission' => 'permission_id',
+    ],
+
+    // 模型授权
+    'permissionModel' => [
+        \App\Category::class => 'categories',
     ],
 
     // 定界符

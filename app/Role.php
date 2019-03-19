@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Contracts\Database\ModelIdentifier;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use phpDocumentor\Reflection\Types\Parent_;
+use phpDocumentor\Reflection\Types\Self_;
+use Shiwuhao\Rbac\Exceptions\InvalidArgumentException;
 use Shiwuhao\Rbac\Traits\RoleTrait;
 
 /**
@@ -34,13 +35,22 @@ class Role extends Model
     use RoleTrait;
 
     /**
-     * 数据授权-分类 (获取此角色下所有分类)
-     * 多对多多态关联  定义反向关联
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @var string
      */
-    public function categories()
+    protected $table = 'rbac_roles';
+
+    /**
+     * Role constructor.
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
     {
-        return $this->morphedByMany('App\Category', 'modelable', 'model_permissions')->withTimestamps();
+        parent::__construct($attributes);
+        $this->setTable(config('rbac.table.roles'));
     }
 
+    public function categories()
+    {
+        return $this->morphedByMany(Category::class, 'modelable', config('rbac.table.permissionModel'))->withTimestamps();
+    }
 }
