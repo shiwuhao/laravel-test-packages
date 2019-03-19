@@ -34,5 +34,9 @@ class Permission extends Model
 {
     use PermissionTrait;
 
-    protected $table = 'rbac_permissions';
+    protected $table = 'permissions';
+
+    protected $fillable = [
+        'name','display_name','description','pid','action'
+    ];
 }

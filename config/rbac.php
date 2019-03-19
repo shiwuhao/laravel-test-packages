@@ -12,11 +12,11 @@ return [
     // 表名称
     'table' => [
         'users' => 'users',
-        'roles' => 'rbac_roles',
-        'roleUser' => 'rbac_role_user',
-        'permissions' => 'rbac_permissions',
-        'permissionRole' => 'rbac_permission_role',
-        'permissionModel' => 'rbac_permission_model',
+        'roles' => 'roles',
+        'roleUser' => 'role_user',
+        'permissions' => 'permissions',
+        'permissionRole' => 'permission_role',
+        'permissionModel' => 'permission_model',
     ],
 
     // 外键
@@ -28,7 +28,7 @@ return [
 
     // 模型授权
     'permissionModel' => [
-        \App\Category::class => 'categories',
+//        'categories' => \App\Category::class,
     ],
 
     // 定界符
@@ -58,20 +58,7 @@ return [
     ],
 
     // 需要生成权限节点的控制器
-    'permission' => [
+    'needGeneratePermission' => [
         \App\Http\Controllers\RoleController::class => '角色管理',
-        \App\Http\Controllers\ConfigController::class => '配置管理',
-        \App\Http\Controllers\UserController::class => '用户管理',
-        \App\Http\Controllers\CategoryController::class => '分类管理',
-        \App\Http\Controllers\DocumentController::class => '文档管理',
-        \App\Http\Controllers\PageController::class => '单页管理',
-        \App\Http\Controllers\EnrollController::class => '报名管理',
-        \App\Http\Controllers\GroupController::class => '组织管理',
-        \App\Http\Controllers\DrawController::class => '抽奖管理',
-        \App\Http\Controllers\BannerController::class => '横幅管理',
-        \App\Http\Controllers\NavigateController::class => '导航管理',
-        \App\Http\Controllers\DonateController::class => '捐赠管理',
-        \App\Http\Controllers\TagController::class => '标签管理',
-        \App\Http\Controllers\OrderController::class => '订单管理',
     ],
 ];

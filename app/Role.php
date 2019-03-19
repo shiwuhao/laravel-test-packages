@@ -39,6 +39,10 @@ class Role extends Model
      */
     protected $table = 'rbac_roles';
 
+    protected $fillable = [
+        'name', 'display_name'
+    ];
+
     /**
      * Role constructor.
      * @param array $attributes
